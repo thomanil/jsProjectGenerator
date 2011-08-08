@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'fileutils';
+
+if(!ARGV[0])
+	puts "\nUsage: javascriptProject <projectname>\n\n"
+	exit
+end
+
+PROJECTNAME = ARGV[0]
+ROOT = "./#{PROJECTNAME}"
+
+INDEX_HTML_PATH = "#{ROOT}/index.html"
+RAKEFILE_PATH = "#{ROOT}/Rakefile"
+JSTESTDRIVER_CONFIG_PATH = "#{ROOT}/jsTestDriver.conf"
+README_PATH = "#{ROOT}/README.md"
+
+JS_TEMPLATE_PATH = "#{ROOT}/js/_PROJECTNAME_.js"
+JS_PATH = "#{ROOT}/js/#{PROJECTNAME}.js"
+
+JS_TEMPLATE_TEST_PATH = "#{ROOT}/test/_PROJECTNAME_Tests.js"
+JS_TEST_PATH = "#{ROOT}/test/#{PROJECTNAME}Tests.js"
+
+
+# Copy _projectTemplate dir to PROJECTNAME dir
+TEMPLATE_LOCATION = "/Users/thomas/versioncontrolled/private/code/scripts/javascriptProject_template";
+FileUtils.cp_r TEMPLATE_LOCATION, "#{PROJECTNAME}"
+
+# Rename js files
+FileUtils.mv JS_TEMPLATE_PATH, JS_PATH
+FileUtils.mv JS_TEMPLATE_TEST_PATH, JS_TEST_PATH
+
+# Gsub js files and html files.
+filtered_files = [JS_PATH, JS_TEST_PATH, INDEX_HTML_PATH, RAKEFILE_PATH, JSTESTDRIVER_CONFIG_PATH, README_PATH]
+
+filtered_files.each do |file_path| 
+  updated_filebody = File.read(file_path).gsub("_PROJECTNAME_", "#{PROJECTNAME}")  
+  File.open(file_path, "w") {|file| file.puts updated_filebody}
+end
