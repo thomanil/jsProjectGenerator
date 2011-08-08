@@ -1,13 +1,8 @@
 # jsProjectGenerator
 
-
 ## DESCRIPTION:
 
-A quick and dirty template/generator for small JavaScript projects. Banged together from HTML5 Boilerplate, includes jQuery, Underscore.js, Grid.js, and Modernizr.
-
-
-## FEATURES/PROBLEMS:
-
+A quick and dirty template/generator for small JavaScript projects. Banged together from HTML5 Boilerplate and some very quick n dirty Ruby code. Includes jQuery, Underscore.js, Grid.js, Modernizr and JSTestDriver in the generated projects.
 
 ## REQUIREMENTS:
 
