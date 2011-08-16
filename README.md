@@ -14,7 +14,7 @@ Put it in your PATH.
 
 ## USAGE:
 
-ruby javascriptProject PROJECTNAME
+'ruby javascriptProject PROJECTNAME'
 
 ## LICENSE:
 
